@@ -1,8 +1,16 @@
-data "aws_ssm_parameter" "example" {
-    name = dyanamodb
+data "aws_secretsmanager_secret" "example" {
+    name = "abhishek"
   
 }
 
+data "aws_secretsmanager_secret_version" "example" {
+    secret_id = data.aws_secretsmanager_secret.example.id
+
+  
+}
+
+locals {
+  example1 = jsondecode(data.aws_secretsmanager_secret_version.example.secret_string)}
 
 
 resource "aws_instance" "web1"{
@@ -10,7 +18,7 @@ resource "aws_instance" "web1"{
     instance_type = var.instance_type1
 
     tags = {
-      Name = data.aws_ssm_parameter.example.value
+      Name = locals.example1.secretvalue
       Environment = var.environment
     }
 
