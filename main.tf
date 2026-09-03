@@ -10,7 +10,10 @@ data "aws_secretsmanager_secret_version" "example" {
 }
 
 locals {
-  example1 = jsondecode(data.aws_secretsmanager_secret_version.example.secret_string)}
+  example1 = jsondecode(
+    data.aws_secretsmanager_secret_version.example.secret_string
+    )
+    }
 
 
 resource "aws_instance" "web1"{
@@ -29,6 +32,5 @@ module "webserver2" {
     ami = var.ami
     instance_type = var.instance_type
 }
-  
 
   
