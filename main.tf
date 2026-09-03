@@ -18,7 +18,7 @@ resource "aws_instance" "web1"{
     instance_type = var.instance_type1
 
     tags = {
-      Name = locals.example1.secretvalue
+      Name = locals.example1.veeramala
       Environment = var.environment
     }
 
