@@ -1,2 +1,6 @@
-var.ami = "ami-081b0a6eac00b4f53"
-var.instance_type = "t3.micro"
+ami = "ami-081b0a6eac00b4f53"
+instance_type = "t3.micro"
+tagname = "web-server1"
+environment = "dev"
+ami1 = "ami-081b0a6eac00b4f53"
+instance_type1 = "t3.small"
