@@ -1,9 +1,16 @@
+data "aws_ssm_parameter" "example" {
+    name = dyanamodb
+  
+}
+
+
+
 resource "aws_instance" "web1"{
     ami = var.ami1
     instance_type = var.instance_type1
 
     tags = {
-      Name = var.tagname
+      Name = data.aws_ssm_parameter.example.value
       Environment = var.environment
     }
 
